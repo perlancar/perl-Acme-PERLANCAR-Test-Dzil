@@ -1,0 +1,27 @@
+#!perl
+
+# DATE
+# VERSION
+
+use 5.010;
+use strict;
+use warnings;
+
+use Perinci::CmdLine::Any;
+
+our %SPEC;
+
+$SPEC{dumpenv} = {
+    v => 1.1,
+    summary => 'Dump %ENV',
+};
+sub dumpenv {
+    [200, "OK", \%ENV];
+}
+
+#use Data::Dump; open my($fh), ">>", "/tmp/pericmd-script1.out"; print $fh "================== \$\$: $$, time=${\(time)}\n", Data::Dump::dump(\%ENV); close $fh;
+
+Perinci::CmdLine::Any->new(url=>"/main/dumpenv")->run;
+
+# ABSTRACT:
+# PODNAME:
